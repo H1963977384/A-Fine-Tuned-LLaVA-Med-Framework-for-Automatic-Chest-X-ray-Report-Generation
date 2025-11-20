@@ -8,16 +8,16 @@ This paper presents a lightweight framework for generating structured chest X-ra
 Please install the required packages for our model via:
 
 ```python
+git clone https://github.com/H1963977384/A-Fine-Tuned-LLaVA-Med-Framework-for-Automatic-Chest-X-ray-Report-Generation.git
+cd A-Fine-Tuned-LLaVA-Med-Framework-for-Automatic-Chest-X-ray-Report-Generation
 pip install -r requirements.txt
 ```
 
 <h2>2. LLaVA-Med Deployment</h2>
-
-<h3>(1) Clone these two repositories</h3>
+<h3>(1) Clone this repository</h3>
 
 ```Python
 git clone https://github.com/microsoft/LLaVA-Med.git
-git clone https://github.com/H1963977384/A-Fine-Tuned-LLaVA-Med-Framework-for-Automatic-Chest-X-ray-Report-Generation.git
 ```
 
 <h3>(2) </h3>
