@@ -5,7 +5,7 @@ This paper presents a lightweight framework for generating structured chest X-ra
 
 <h1>Get Started</h1>
 <h2>1. Required Packages</h2>
-Please install the required packages for our model via:
+Please install the required packages for our model via: <br>
 
 ```python
 pip install -r requirements.txt
