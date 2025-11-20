@@ -35,7 +35,6 @@ s
 
 <h1>Contribution</h1>
 The team collaboratively completed this research. The seamless integration of each phase ensured the smooth progression of the research.
-<hr>
 
 ![hyt.png](./doc/hyt.png)
 ![ln.png](./doc/ln.png)
