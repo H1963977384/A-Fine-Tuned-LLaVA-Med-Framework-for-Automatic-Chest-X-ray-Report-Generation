@@ -7,7 +7,7 @@ This paper presents a lightweight framework for generating structured chest X-ra
 <h2>1. Required Packages</h2>
 Please install the required packages for our model via:
 
-```python
+```Shell
 git clone https://github.com/H1963977384/A-Fine-Tuned-LLaVA-Med-Framework-for-Automatic-Chest-X-ray-Report-Generation.git
 cd A-Fine-Tuned-LLaVA-Med-Framework-for-Automatic-Chest-X-ray-Report-Generation
 pip install -r requirements.txt
@@ -20,21 +20,25 @@ pip install -r requirements.txt
 git clone https://github.com/microsoft/LLaVA-Med.git
 ```
 
-<h3>(2) </h3>
+<h3>(2) Install relavant packages</h3>
 
+```Shell
+cd LLaVA-Med
+pip install --upgrade pip
+pip install --user -e .
+```
 
-
-<h2>Dataset</h2>
+<h2>3. Dataset</h2>
 <h3>(1) Description</h3>
 To achieve the research objectives, this study utilizes the IU X-Ray Dataset. Collected retrospectively between 2011 and 2018 by researchers at Indiana University Health from two large hospital systems within Indiana's patient care network, this dataset was specifically constructed for chest X-ray image understanding and report generation tasks.
 
 ![Dataset.png](./plot/dataset.png)
 
 <h3>(2) Download and Transform</h3>
-Load the image data via:
+Load the image data by the following code. If encountering network problems, please download directly from [Kaggle](https://www.kaggle.com/datasets/raddar/chest-xrays-indiana-university).
 
 ```Shell
-cd data
+cd ../data
 python download.py
 ```
 
@@ -42,6 +46,12 @@ The text data has already been processed, so users can simply use it. Then we ju
 
 ```Shell
 python report2json.py
+```
+
+<h2>3. Training</h2>
+
+```Shell
+cd 
 ```
 
 <h2>Evaluation</h2>
