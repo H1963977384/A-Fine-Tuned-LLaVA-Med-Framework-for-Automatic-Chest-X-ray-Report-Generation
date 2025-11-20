@@ -37,3 +37,4 @@ s
 The team collaboratively completed this research. The seamless integration of each phase ensured the smooth progression of the research.
 
 ![hyt.png](./doc/hyt.png)
+![ln.png](./doc/ln.png)
