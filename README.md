@@ -46,7 +46,7 @@ python report2json.py
 
 <h2>Evaluation</h2>
 <h3>Only LLaVA-Med</h3>
-Please ensure you have already downloaded the dataset and placed in `data` folder.
+Please ensure you have already downloaded the dataset and placed under ``data`` folder.
 
 ```Shell
 cd /model/eval
