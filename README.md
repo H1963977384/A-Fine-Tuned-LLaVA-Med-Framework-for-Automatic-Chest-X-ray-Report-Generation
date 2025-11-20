@@ -25,12 +25,12 @@ git clone https://github.com/H1963977384/A-Fine-Tuned-LLaVA-Med-Framework-for-Au
 
 
 <h2>Dataset</h2>
-<h3>Description</h3>
+<h3>(1) Description</h3>
 To achieve the research objectives, this study utilizes the IU X-Ray Dataset. Collected retrospectively between 2011 and 2018 by researchers at Indiana University Health from two large hospital systems within Indiana's patient care network, this dataset was specifically constructed for chest X-ray image understanding and report generation tasks.
 
 ![Dataset.png](./plot/dataset.png)
 
-<h3>Download</h3>
+<h3>(2) Download and Transform</h3>
 Load the image data via:
 
 ```Shell
@@ -38,11 +38,11 @@ cd data
 python download.py
 ```
 
-The text data has already been processed, so users can simply use it. Then we just need to transfer the image path and the text data into a JSON file.
+The text data has already been processed, so users can simply use it. Then we just need to transfer the image path and the text data into two JSON files (For Train and Test).
+
 ```Shell
 python report2json.py
 ```
-
 
 <h2>Evaluation</h2>
 <h3>Only LLaVA-Med</h3>
