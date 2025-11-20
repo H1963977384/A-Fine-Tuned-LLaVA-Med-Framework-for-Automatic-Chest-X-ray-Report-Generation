@@ -71,8 +71,8 @@ python train_lora.py \
 Please ensure you have already downloaded the dataset and placed under **data** folder.
 
 ```Shell
-cd /model/eval
-python llava.py
+python ./eval/llava.py \
+  --json_file ~/data/test_report.json
 ```
 
 ![Only_LLaVA-Med.png](./plot/Only_LLaVA-Med.png)
@@ -81,8 +81,8 @@ python llava.py
 <h3>LLaVA-Med + LoRA</h3>
 
 ```Shell
-cd /model/eval
-python llava_lora.py
+python ./eval/llava_lora.py \
+  --json_file ~/data/test_report.json
 ```
 
 ![LLaVA-Med+LoRA.png](./plot/LLaVA-Med+LoRA.png)
