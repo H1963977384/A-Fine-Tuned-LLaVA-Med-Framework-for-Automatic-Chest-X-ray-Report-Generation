@@ -18,26 +18,26 @@ s
 <h3>Only LLaVA-Med</h3>
 
 
-![Only_LLaVA-Med.png](./doc/Only_LLaVA-Med.png)
+![Only_LLaVA-Med.png](./plot/Only_LLaVA-Med.png)
 
 
 <h3>LLaVA-Med + LoRA</h3>
 
 
-![LLaVA-Med+LoRA.png](./doc/LLaVA-Med+LoRA.png)
+![LLaVA-Med+LoRA.png](./plot/LLaVA-Med+LoRA.png)
 
 
 <h2>Main Result</h2>
 
-![result.png](./doc/result.png)
+![result.png](./plot/result.png)
 
 
 
 <h1>Contribution</h1>
 The team collaboratively completed this research. The seamless integration of each phase ensured the smooth progression of the research.
 
-![hyt.png](./doc/hyt.png)
-![ln.png](./doc/ln.png)
-![lry.png](./doc/lry.png)
-![tsy.png](./doc/tsy.png)
-![hjm.png](./doc/hjm.png)
+![hyt.png](./plot/hyt.png)
+![ln.png](./plot/ln.png)
+![lry.png](./plot/lry.png)
+![tsy.png](./plot/tsy.png)
+![hjm.png](./plot/hjm.png)
