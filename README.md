@@ -4,8 +4,8 @@
 This paper presents a lightweight framework for generating structured chest X-ray reports by fine-tuning LLaVA-Med with LoRA on the IU X-Ray dataset. Our method achieves state-of-the-art performance across multiple metrics, demonstrating significant improvements in clinical accuracy and semantic coherence compared to existing approaches.
 
 <h1>Get Started</h1>
-<h2>Install Packages</h2>
-Please install the requirements via:
+<h2>1. Install Packages</h2>
+Please install the required packages for our model via:
 
 ```python
 pip install -r requirements.txt
@@ -36,7 +36,4 @@ s
 <h1>Contribution</h1>
 The team collaboratively completed this research. The seamless integration of each phase ensured the smooth progression of the research.
 
-- **HUANG Yintang** served as the team leader, responsible for model deployment, performance evaluation, and slide preparation. 
-- **LI Nuo** focused on model engineering deployment and documentation, handling parameter fine-tuning and model training.
-- **TAN Shiying** and **LI Ruiyuan** jointly conducted literature review, and collaborating on paper drafting.
-- **HUANG Jimin** led dataset collection, and preprocessing, providing high-quality foundational data for model training.
+![hyt.png](./doc/hyt.png)
