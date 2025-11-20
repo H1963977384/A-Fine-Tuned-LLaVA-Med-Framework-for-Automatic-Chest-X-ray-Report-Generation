@@ -13,7 +13,7 @@ pip install -r requirements.txt
 
 <h2>2. LLaVA-Med Deployment</h2>
 
-<h3>(1) Clone this repository</h3>
+<h3>(1) Clone these two repositories</h3>
 
 ```python
 git clone https://github.com/microsoft/LLaVA-Med.git
@@ -46,13 +46,22 @@ python report2json.py
 
 <h2>Evaluation</h2>
 <h3>Only LLaVA-Med</h3>
+Please ensure you have already downloaded the dataset and placed in `data` folder.
 
+```Shell
+cd /model/eval
+python llava.py
+```
 
 ![Only_LLaVA-Med.png](./plot/Only_LLaVA-Med.png)
 
 
 <h3>LLaVA-Med + LoRA</h3>
 
+```Shell
+cd /model/eval
+python llava_lora.py
+```
 
 ![LLaVA-Med+LoRA.png](./plot/LLaVA-Med+LoRA.png)
 
