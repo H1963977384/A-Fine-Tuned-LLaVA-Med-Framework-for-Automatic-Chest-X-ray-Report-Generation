@@ -1,5 +1,8 @@
 ![title.png](./doc/title.png)
 
+<h1>Abstract</h1>
+This paper presents a lightweight framework for generating structured chest X-ray reports by fine-tuning LLaVA-Med with LoRA on the IU X-Ray dataset. Our method achieves state-of-the-art performance across multiple metrics, demonstrating significant improvements in clinical accuracy and semantic coherence compared to existing approaches.
+
 <h1>Install</h1>
 s
 
