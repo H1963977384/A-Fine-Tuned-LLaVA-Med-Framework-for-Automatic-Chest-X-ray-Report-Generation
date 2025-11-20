@@ -15,7 +15,7 @@ pip install -r requirements.txt
 
 <h3>(1) Clone these two repositories</h3>
 
-```python
+```Python
 git clone https://github.com/microsoft/LLaVA-Med.git
 git clone https://github.com/H1963977384/A-Fine-Tuned-LLaVA-Med-Framework-for-Automatic-Chest-X-ray-Report-Generation.git
 ```
@@ -26,7 +26,7 @@ git clone https://github.com/H1963977384/A-Fine-Tuned-LLaVA-Med-Framework-for-Au
 
 <h2>Dataset</h2>
 <h3>Description</h3>
-To achieve the research objectives, this study utilizes the [[Paper, NeurIPS 2023 Datasets and Benchmarks Track (Spotlight)](https://arxiv.org/abs/2306.00890)] . Collected retrospectively between 2011 and 2018 by researchers at Indiana University Health from two large hospital systems within Indiana's patient care network, this dataset was specifically constructed for chest X-ray image understanding and report generation tasks.
+To achieve the research objectives, this study utilizes the IU X-Ray Dataset. Collected retrospectively between 2011 and 2018 by researchers at Indiana University Health from two large hospital systems within Indiana's patient care network, this dataset was specifically constructed for chest X-ray image understanding and report generation tasks.
 
 ![Dataset.png](./plot/dataset.png)
 
