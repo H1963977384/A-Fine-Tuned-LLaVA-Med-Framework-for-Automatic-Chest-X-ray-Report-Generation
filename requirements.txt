@@ -29,4 +29,5 @@ torch==2.2.2
 torchaudio==2.2.2
 torchvision==0.17.2
 tqdm==4.65.0
+kagglehub==0.3.13
 transformers==4.36.2
