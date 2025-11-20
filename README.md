@@ -26,7 +26,7 @@ git clone https://github.com/H1963977384/A-Fine-Tuned-LLaVA-Med-Framework-for-Au
 
 <h2>Dataset</h2>
 <h3>Description</h3>
-To achieve the research objectives, this study utilizes the [IU X-Ray dataset](https://www.kaggle.com/datasets/raddar/chest-xrays-indiana-university) . Collected retrospectively between 2011 and 2018 by researchers at Indiana University Health from two large hospital systems within Indiana's patient care network, this dataset was specifically constructed for chest X-ray image understanding and report generation tasks.
+To achieve the research objectives, this study utilizes the [[IU X-Ray dataset](https://www.kaggle.com/datasets/raddar/chest-xrays-indiana-university)]. Collected retrospectively between 2011 and 2018 by researchers at Indiana University Health from two large hospital systems within Indiana's patient care network, this dataset was specifically constructed for chest X-ray image understanding and report generation tasks.
 
 ![Dataset.png](./plot/dataset.png)
 
