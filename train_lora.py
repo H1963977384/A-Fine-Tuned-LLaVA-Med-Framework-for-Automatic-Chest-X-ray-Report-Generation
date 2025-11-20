@@ -13,7 +13,7 @@ from torch.cuda.amp import autocast, GradScaler
 from PIL import Image
 from transformers import set_seed, logging
 
-# HF / LLAVA imports (保持你的工程路径)
+# HF / LLAVA imports (Keep your engineering path)
 from llava.constants import IMAGE_TOKEN_INDEX, DEFAULT_IMAGE_TOKEN, DEFAULT_IM_START_TOKEN, DEFAULT_IM_END_TOKEN
 from llava.conversation import conv_templates, SeparatorStyle
 from llava.model.builder import load_pretrained_model
@@ -36,9 +36,9 @@ DEFAULT_IMAGE_DIR = PROJECT_ROOT / "IU_XRay_Cleaned_Dataset" / "images"
 # -------------------------
 class LLaVAMedDataset(Dataset):
     """
-    每个 item 是一个 report dict，包含 'image' 和 'conversations' (list, first elem 是 question, second elem 是 answer)
-    按照 run_model 的方式构造 prompt（含图像 token），并把 prompt + answer 拼接。
-    labels: prompt 部分为 -100（不计算 loss），answer 部分为 token ids。
+   Each item is a report dictionary containing ‘image’ and ‘conversations’ (a list where the first element is the question and the second is the answer).
+   Construct the prompt (including image tokens) following the run_model method, then concatenate the prompt and answer.
+   Labels: The prompt portion is -100 (not included in loss calculation), while the answer portion consists of token IDs.
     """
 
     def __init__(self, reports, tokenizer, image_processor, model_config, image_dir, context_len=2048):
@@ -84,7 +84,7 @@ class LLaVAMedDataset(Dataset):
         input_ids = prompt_ids + target_ids + [self.tokenizer.eos_token_id] if self.tokenizer.eos_token_id is not None else prompt_ids + target_ids
 
         if len(input_ids) > self.context_len:
-            # 如果过长，优先截断 prompt（保留尽可能多的 target）
+            # If too long, prioritize truncating the prompt (while preserving as much of the target as possible).
             # strategy: keep last `context_len - len(target_ids)` tokens of prompt
             keep_prompt_len = max(0, self.context_len - len(target_ids) - (1 if self.tokenizer.eos_token_id is not None else 0))
             prompt_ids = prompt_ids[-keep_prompt_len:]
@@ -277,10 +277,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--model_path", type=str, default="microsoft/llava-med-v1.5-mistral-7b",
                         help="base LLaVA-Med model path (HuggingFace id or local)")
-    parser.add_argument("--json_file", type=str, default=str(DEFAULT_JSON_PATH), help="每行一个 json 的标注文件")
+    parser.add_argument("--json_file", type=str, default=str(DEFAULT_JSON_PATH), help="A JSON annotation file with one entry per line")
     parser.add_argument("--image_dir", type=str, default=str(DEFAULT_IMAGE_DIR),
-                        help="图片目录")
-    parser.add_argument("--output_dir", type=str, default="./lora_output", help="保存 LoRA 的目录")
+                        help="Image Directory")
+    parser.add_argument("--output_dir", type=str, default="./lora_output", help="Directory for storing LoRA")
     parser.add_argument("--epochs", type=int, default=3)
     parser.add_argument("--batch_size", type=int, default=1)
     parser.add_argument("--lr", type=float, default=2e-4)
@@ -290,8 +290,9 @@ if __name__ == "__main__":
     parser.add_argument("--lora_alpha", type=int, default=16)
     parser.add_argument("--lora_dropout", type=float, default=0.05)
     parser.add_argument("--target_modules", type=str, default="q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj",
-                        help="逗号分隔的 target module 列表")
+                        help="Comma-separated list of target modules")
     args = parser.parse_args()
 
     os.makedirs(args.output_dir, exist_ok=True)
+
     train(args)
