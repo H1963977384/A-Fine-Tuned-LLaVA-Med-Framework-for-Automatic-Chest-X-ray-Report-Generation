@@ -17,6 +17,7 @@ pip install -r requirements.txt
 
 ```python
 git clone https://github.com/microsoft/LLaVA-Med.git
+git clone https://github.com/H1963977384/A-Fine-Tuned-LLaVA-Med-Framework-for-Automatic-Chest-X-ray-Report-Generation.git
 ```
 
 <h3>(2) </h3>
