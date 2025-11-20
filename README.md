@@ -95,7 +95,7 @@ python ./eval/llava_lora.py \
 
 
 <h1>Contribution</h1>
-The team collaboratively completed this research. The seamless integration of each phase ensured the smooth progression of the research.
+The team collaboratively completed this research. The seamless integration of each phase ensured the smooth progression of the research. <br>
 
 ![hyt.png](./plot/hyt.png)
 ![ln.png](./plot/ln.png)
