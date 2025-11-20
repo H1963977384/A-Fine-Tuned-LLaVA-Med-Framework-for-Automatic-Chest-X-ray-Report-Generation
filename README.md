@@ -42,16 +42,28 @@ cd ../data
 python download.py
 ```
 
-The text data has already been processed, so users can simply use it. Then we just need to transfer the image path and the text data into two JSON files (For Train and Test).
+The text data has been preprocessed and is ready for immediate use. The image paths and corresponding text data should be organized into separate JSON files for training and testing sets.
 
 ```Shell
 python report2json.py
 ```
 
 <h2>3. Training</h2>
+The training hyperparameters (epochs, batch size, gradient accumulation steps, LoRA rank, and alpha) can be adjusted according to available computational resources.
 
 ```Shell
-cd 
+cd ..
+python train_lora.py \
+  --model_path microsoft/llava-med-v1.5-mistral-7b \
+  --json_file ~/data/train_report.json \
+  --image_dir ~/data/images \
+  --output_dir ~/lora_weight \
+  --epochs 10 \
+  --batch_size 1 \
+  --gradient_accumulation_steps 64 \
+  --lora_r 64 \
+  --lora_alpha 128 \
+  --lr 2e-4
 ```
 
 <h2>Evaluation</h2>
