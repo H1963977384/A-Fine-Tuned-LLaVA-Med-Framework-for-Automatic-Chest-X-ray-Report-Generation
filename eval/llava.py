@@ -1,12 +1,5 @@
 # Model evaluation script for LLaVA-Med fine-tuned model performance assessment
 # Computes multiple NLP metrics (BLEU, ROUGE, METEOR, F1) on radiology report generation
-import sys
-import os
-
-current_dir = os.path.dirname(os.path.abspath(__file__))
-llava_dir = os.path.join('../LLaVA-Med', 'LLaVA')
-sys.path.insert(0, llava_dir)
-
 from llava.constants import IMAGE_TOKEN_INDEX, DEFAULT_IMAGE_TOKEN, DEFAULT_IM_START_TOKEN, DEFAULT_IM_END_TOKEN
 from llava.conversation import conv_templates, SeparatorStyle
 from llava.mm_utils import tokenizer_image_token, get_model_name_from_path, KeywordsStoppingCriteria, process_images
@@ -118,7 +111,7 @@ def run_model(report):
     input_ids = tokenizer_image_token(prompt, tokenizer, IMAGE_TOKEN_INDEX, return_tensors='pt').unsqueeze(0).cuda()
 
     # Load and preprocess medical image for model input
-    image_path = '../data/image/images/images_normalized/'+ report['image']
+    image_path = '../data/images/images_normalized/'+ report['image']
     image = Image.open(image_path)
     image_tensor = process_images([image], image_processor, model.config)[0]
     
@@ -189,7 +182,7 @@ def calculate_sacrebleu_all(references, candidate):
 
 # Configure command-line interface for evaluation script
 parser = argparse.ArgumentParser(description='input testing file')
-parser.add_argument('--json_file', type=str, required=True, help='Path to JSON file containing test cases with image references and ground truth reports')
+parser.add_argument('--json_file', type=str, required=False, help='Path to JSON file containing test cases with image references and ground truth reports', default='../data/test_report.csv')
 args = parser.parse_args()
 json_file = args.json_file
 
@@ -199,13 +192,12 @@ with open(json_file, 'r') as f:
 
 # Initialize accumulators for evaluation metrics
 count = 0
+# Initialize ROUGE scorer for text similarity metrics
+rouge = Rouge()
 # Store cumulative scores for findings section evaluation
 finding_results = {'B-1': 0, 'B-2': 0, 'B-3': 0, 'B-4': 0, 'METEOR': 0, 'ROUGE-1': 0, 'ROUGE-2': 0, 'ROUGE-L': 0, 'F1': 0, 'Precision': 0, 'Recall': 0}
 # Store cumulative scores for impression section evaluation  
 impression_results = {'B-1': 0, 'B-2': 0, 'B-3': 0, 'B-4': 0, 'METEOR': 0, 'ROUGE-1': 0, 'ROUGE-2': 0, 'ROUGE-L': 0, 'F1': 0, 'Precision': 0, 'Recall': 0}
-
-# Initialize ROUGE scorer for text similarity metrics
-rouge = Rouge()
 
 # Evaluate model performance on each test case
 for report in tqdm(reports):
@@ -241,4 +233,5 @@ for report in tqdm(reports):
 
     # Print running averages for real-time monitoring
     print(f"【Finding】    B-1: {finding_results['B-1']/count:.2f}, B-2: {finding_results['B-2']/count:.2f}, B-3: {finding_results['B-3']/count:.2f}, B-4: {finding_results['B-4']/count:.2f}, METEOR: {finding_results['METEOR']/count:.2f}, ROUGE-1: {finding_results['ROUGE-1']/count:.2f}, ROUGE-2: {finding_results['ROUGE-2']/count:.2f}, ROUGE-L: {finding_results['ROUGE-L']/count:.2f}, Precision: {finding_results['Precision']/count:.2f}, Recall: {finding_results['Recall']/count:.2f}, F1: {finding_results['F1']/count:.2f}")
+
 
