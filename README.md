@@ -75,11 +75,20 @@ python llava.py --json_file ../data/test_report.json
 
 
 <h3>(2) LLaVA-Med + LoRA</h3>
-Users can either train their own LoRA weights or utilize our pre-trained versions. To use our weights, download them via:
+Users can either train their own LoRA weights or utilize our pre-trained versions. To utilize our pre-trained weights, Git LFS must first be installed. For installation instructions, please refer to:
+
+```Shell
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+sudo apt-get install git-lfs
+git lfs install
+```
+
+Then download them via:
 
 ```Shell
 cd ..
 git clone https://github.com/H1963977384/LoRA_Weight.git
+git lfs pull
 unzip lora_final4.zip
 ```
 
