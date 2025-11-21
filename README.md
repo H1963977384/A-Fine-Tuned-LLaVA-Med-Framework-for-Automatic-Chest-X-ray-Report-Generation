@@ -73,7 +73,7 @@ python train_lora.py \
 Please ensure you have already downloaded the dataset and placed under **data** folder.
 
 ```Shell
-python ./LLaVA-Med/eval/llava.py \
+python ./LLaVA-Med/llava.py \
   --json_file ./data/test_report.json
 ```
 
