@@ -83,7 +83,7 @@ class LLaVAMedDataset(Dataset):
             tuple: (formatted_prompt, target_answer) strings
         """
         # Extract and clean the question text
-        question = report['conversations'][0]['value']
+        question = report['prompt']
         qs = question.replace(DEFAULT_IMAGE_TOKEN, '').strip()
 
         # Format question with image tokens based on model configuration
@@ -99,7 +99,7 @@ class LLaVAMedDataset(Dataset):
         prompt = conv.get_prompt()
 
         # Extract ground truth answer from conversation
-        target = report['conversations'][1]['value'].strip()
+        target = report['response'].strip()
         return prompt, target
 
     def encode_pair(self, prompt, target):
@@ -419,5 +419,6 @@ if __name__ == "__main__":
 
     # Start training
     train(args)
+
 
 
