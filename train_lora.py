@@ -1,4 +1,4 @@
-import argparse
+fimimport argparse
 import os
 import json
 import math
@@ -359,7 +359,7 @@ def run_model_inference(tokenizer, model, image_processor, report, device="cuda"
     input_ids = tokenizer_image_token(prompt, tokenizer, IMAGE_TOKEN_INDEX, return_tensors='pt').unsqueeze(0).cuda()
 
     # Load and process image
-    image_path = os.path.join(args.image_dir, report['image'])
+    image_path = os.path.join(args.image_dir, report['input_image'])
     image = Image.open(image_path)
     image_tensor = process_images([image], image_processor, model.config)[0]
 
@@ -419,7 +419,3 @@ if __name__ == "__main__":
 
     # Start training
     train(args)
-
-
-
-
