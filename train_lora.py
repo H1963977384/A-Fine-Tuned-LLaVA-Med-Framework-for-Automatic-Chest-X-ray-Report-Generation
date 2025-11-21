@@ -183,7 +183,7 @@ class LLaVAMedDataset(Dataset):
         report = self.reports[idx]
         prompt, target = self.build_prompt_and_target(report)
         input_ids, labels = self.encode_pair(prompt, target)
-        image_tensor = self.load_image_tensor(report['image'])
+        image_tensor = self.load_image_tensor(report['input_image'])
         return {
             "input_ids": input_ids,
             "labels": labels,
@@ -419,3 +419,4 @@ if __name__ == "__main__":
 
     # Start training
     train(args)
+
