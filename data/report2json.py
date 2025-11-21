@@ -60,7 +60,7 @@ def to_json(dataframe):
         # Create data entry for primary/first image in the study
         row_dict1 = {
             "prompt": prompt,
-            "input_image": './images/images_normalized/' + image_path[0],  # Full path to first image
+            "input_image": image_path[0],  # Full path to first image
             "response": f"Findings: {row['findings']} Impression: {row['impression']}"  # Ground truth radiology report
         }
         
@@ -68,7 +68,7 @@ def to_json(dataframe):
         if len(image_path) > 1:
             row_dict2 = {
                 "prompt": prompt,
-                "input_image": './images/images_normalized/' + image_path[1],  # Path to secondary image
+                "input_image": image_path[1],  # Path to secondary image
                 "response": f"Findings: {row['findings']} Impression: {row['impression']}"  # Same report for additional view
             }
             data.append(dict(row_dict2))
@@ -92,4 +92,5 @@ with open("./test_report.json", "w", encoding="utf-8") as f:
 # Output dataset statistics for verification
 print(f"✅ Generated {len(train)} training entries and saved to train_report.json")
 print(f"✅ Generated {len(test)} test entries and saved to test_report.json")
+
 
