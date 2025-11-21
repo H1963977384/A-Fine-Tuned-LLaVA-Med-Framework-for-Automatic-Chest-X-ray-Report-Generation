@@ -182,7 +182,7 @@ def calculate_sacrebleu_all(references, candidate):
 
 # Configure command-line interface for evaluation script
 parser = argparse.ArgumentParser(description='input testing file')
-parser.add_argument('--json_file', type=str, required=False, help='Path to JSON file containing test cases with image references and ground truth reports', default='../data/test_report.csv')
+parser.add_argument('--json_file', type=str, required=False, help='Path to JSON file containing test cases with image references and ground truth reports', default='../data/test_report.json')
 args = parser.parse_args()
 json_file = args.json_file
 
@@ -233,5 +233,3 @@ for report in tqdm(reports):
 
     # Print running averages for real-time monitoring
     print(f"【Finding】    B-1: {finding_results['B-1']/count:.2f}, B-2: {finding_results['B-2']/count:.2f}, B-3: {finding_results['B-3']/count:.2f}, B-4: {finding_results['B-4']/count:.2f}, METEOR: {finding_results['METEOR']/count:.2f}, ROUGE-1: {finding_results['ROUGE-1']/count:.2f}, ROUGE-2: {finding_results['ROUGE-2']/count:.2f}, ROUGE-L: {finding_results['ROUGE-L']/count:.2f}, Precision: {finding_results['Precision']/count:.2f}, Recall: {finding_results['Recall']/count:.2f}, F1: {finding_results['F1']/count:.2f}")
-
-
