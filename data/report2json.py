@@ -71,10 +71,10 @@ def to_json(dataframe):
                 "input_image": './images/images_normalized/' + image_path[1],  # Path to secondary image
                 "response": f"Findings: {row['findings']} Impression: {row['impression']}"  # Same report for additional view
             }
-            data.append(row_dict2)
+            data.append(dict(row_dict2))
         
         # Add primary image entry to dataset
-        data.append(row_dict1)
+        data.append(dict(row_dict1))
     return data
 
 # Generate formatted training and test datasets
@@ -92,3 +92,4 @@ with open("./test_report.json", "w", encoding="utf-8") as f:
 # Output dataset statistics for verification
 print(f"✅ Generated {len(train)} training entries and saved to train_report.json")
 print(f"✅ Generated {len(test)} test entries and saved to test_report.json")
+
