@@ -257,7 +257,7 @@ def train(args):
 
     # Load and prepare training data
     with open(args.json_file, "r") as f:
-        reports = [json.loads(line) for line in f]
+        reports = [json.loads(line) for line in f][0]
 
     dataset = LLaVAMedDataset(reports, tokenizer, image_processor, model.config, args.image_dir, context_len=context_len)
     dataloader = DataLoader(dataset, batch_size=args.batch_size, shuffle=True, collate_fn=collate_fn)
@@ -419,6 +419,7 @@ if __name__ == "__main__":
 
     # Start training
     train(args)
+
 
 
 
