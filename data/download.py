@@ -3,7 +3,7 @@ import os
 import shutil
 
 # Define target directory for dataset storage in current working directory
-target_path = os.path.join(os.getcwd(), 'image')
+target_path = os.getcwd()
 
 # Download the Indiana University Chest X-rays dataset using Kaggle Hub API
 # Dataset contains chest radiograph images and associated medical data
