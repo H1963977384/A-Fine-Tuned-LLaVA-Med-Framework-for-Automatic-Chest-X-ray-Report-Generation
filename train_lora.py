@@ -31,7 +31,7 @@ disable_torch_init()
 # Project directory structure configuration
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_JSON_PATH = PROJECT_ROOT / "data" / "train_report.json"
-DEFAULT_IMAGE_DIR = PROJECT_ROOT / "IU_XRay_Cleaned_Dataset" / "images"
+DEFAULT_IMAGE_DIR = PROJECT_ROOT / "images" / "images_normalized"
 
 
 # -------------------------
@@ -419,3 +419,4 @@ if __name__ == "__main__":
 
     # Start training
     train(args)
+
