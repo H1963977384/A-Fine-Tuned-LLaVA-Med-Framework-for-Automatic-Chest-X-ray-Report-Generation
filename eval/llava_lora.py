@@ -32,8 +32,8 @@ logging.set_verbosity_error()
 
 # Configure command-line arguments for flexible evaluation
 parser = argparse.ArgumentParser(description='Evaluate fine-tuned LLaVA-Med model with LoRA adapters')
-parser.add_argument('--lora_path', type=str, required=True, help='Path to directory containing trained LoRA adapter weights')
-parser.add_argument('--json_file', type=str, required=True, help='Path to JSON file containing test cases with image references and ground truth reports')
+parser.add_argument('--lora_path', type=str, required=False, help='Path to directory containing trained LoRA adapter weights', default='../lora_final3')
+parser.add_argument('--json_file', type=str, required=False, help='Path to JSON file containing test cases with image references and ground truth reports', default='../data/test_report.json')
 args = parser.parse_args()
 
 def split_list(lst, n):
@@ -126,7 +126,7 @@ def run_model(report):
     input_ids = tokenizer_image_token(prompt, tokenizer, IMAGE_TOKEN_INDEX, return_tensors='pt').unsqueeze(0).cuda()
 
     # Load and preprocess medical image for model input
-    image_path = '../data/image/images/images_normalized/'+ report['image']
+    image_path = '../data/images/images_normalized/'+ report['image']
     image = Image.open(image_path)
     image_tensor = process_images([image], image_processor, model.config)[0]
     
@@ -290,4 +290,5 @@ for report in tqdm(reports):
 【Finding】    B-1: {finding_results['B-1']/count:.2f}, B-2: {finding_results['B-2']/count:.2f}, B-3: {finding_results['B-3']/count:.2f}, B-4: {finding_results['B-4']/count:.2f}, METEOR: {finding_results['METEOR']/count:.2f}, ROUGE-1: {finding_results['ROUGE-1']/count:.2f}, ROUGE-2: {finding_results['ROUGE-2']/count:.2f}, ROUGE-L: {finding_results['ROUGE-L']/count:.2f}, Precision: {finding_results['Precision']/count:.2f}, Recall: {finding_results['Recall']/count:.2f}, F1: {finding_results['F1']/count:.2f}
 
 【Impression】 B-1: {impression_results['B-1']/count:.2f}, B-2: {impression_results['B-2']/count:.2f}, B-3: {impression_results['B-3']/count:.2f}, B-4: {impression_results['B-4']/count:.2f}, METEOR: {impression_results['METEOR']/count:.2f}, ROUGE-1: {impression_results['ROUGE-1']/count:.2f}, ROUGE-2: {impression_results['ROUGE-2']/count:.2f}, ROUGE-L: {impression_results['ROUGE-L']/count:.2f}, Precision: {impression_results['Precision']/count:.2f}, Recall: {impression_results['Recall']/count:.2f}, F1: {impression_results['F1']/count:.2f}''')
+
 
