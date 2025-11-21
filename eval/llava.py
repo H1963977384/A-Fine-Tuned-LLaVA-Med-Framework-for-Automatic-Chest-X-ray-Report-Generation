@@ -91,7 +91,7 @@ def run_model(report):
         str: Generated radiology report text from the model
     """
     # Construct enhanced prompt with consistency constraints for medical reporting
-    question = report['conversations'][0]['value']+" The Findings and Impression sections must be logically consistent. A finding cannot both be present and absent. State each finding only once. Do not create looping or repetitive text."
+    question = report['prompt']+" The Findings and Impression sections must be logically consistent. A finding cannot both be present and absent. State each finding only once. Do not create looping or repetitive text."
     questions = get_chunk(question, 1, 0)
     qs = questions.replace(DEFAULT_IMAGE_TOKEN, '').strip()
     
@@ -111,7 +111,7 @@ def run_model(report):
     input_ids = tokenizer_image_token(prompt, tokenizer, IMAGE_TOKEN_INDEX, return_tensors='pt').unsqueeze(0).cuda()
 
     # Load and preprocess medical image for model input
-    image_path = '../data/images/images_normalized/'+ report['image']
+    image_path = '../data/images/images_normalized/'+ report['input_image']
     image = Image.open(image_path)
     image_tensor = process_images([image], image_processor, model.config)[0]
     
@@ -202,7 +202,7 @@ impression_results = {'B-1': 0, 'B-2': 0, 'B-3': 0, 'B-4': 0, 'METEOR': 0, 'ROUG
 # Evaluate model performance on each test case
 for report in tqdm(reports):
     count += 1
-    ori = report["conversations"][1]["value"]  # Ground truth report
+    ori = report["response"]  # Ground truth report
     output = run_model(report)  # Model-generated report
     
     # Prepare tokenized versions for metric computation
