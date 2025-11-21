@@ -88,14 +88,15 @@ Then download them via:
 ```Shell
 cd ..
 git lfs clone https://github.com/H1963977384/LoRA_Weight.git
+cd LoRA_Weight
 unzip lora_final4.zip
 ```
 
 The LoRA weights can then be integrated into the base model through:
 
 ```Shell
-cd LLaVA-Med
-python llava_lora.py --lora_path ../lora_final3 --json_file ../data/test_report.json
+cd ../LLaVA-Med
+python llava_lora.py --lora_path ../LoRA_Weight/lora_final3 --json_file ../data/test_report.json
 ```
 
 ![LLaVA-Med+LoRA.png](./plot/LLaVA-Med+LoRA.png)
