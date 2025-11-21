@@ -57,7 +57,7 @@ python train_lora.py \
   --model_path microsoft/llava-med-v1.5-mistral-7b \
   --json_file ./data/train_report.json \
   --image_dir ./data/images \
-  --output_dir ./LoRA_Weight \
+  --output_dir ./lora_weight \
   --epochs 10 \
   --batch_size 1 \
   --gradient_accumulation_steps 64 \
