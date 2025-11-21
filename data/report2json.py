@@ -52,7 +52,7 @@ def to_json(dataframe):
         # Create data entry for primary/first image in the study
         row_dict1 = {
             "prompt": prompt,
-            "input_image": './images/' + image_path[0],  # Full path to first image
+            "input_image": './images/images_normalized/' + image_path[0],  # Full path to first image
             "response": f"Findings: {row['findings']} Impression: {row['impression']}"  # Ground truth radiology report
         }
         
@@ -60,36 +60,14 @@ def to_json(dataframe):
         if len(image_path) > 1:
             row_dict2 = {
                 "prompt": prompt,
-                "input_image": './images/' + image_path[1],  # Path to secondary image
+                "input_image": './images/images_normalized/' + image_path[1],  # Path to secondary image
                 "response": f"Findings: {row['findings']} Impression: {row['impression']}"  # Same report for additional view
             }
             data.append(row_dict2)
         
         # Add primary image entry to dataset
         data.append(row_dict1)
-    
-    # Convert intermediate format to final LLaVA-compatible JSON structure
-    output = []
-    for i, d in enumerate(data):
-        output.append({
-            "id": str(i).zfill(5),  # Zero-padded ID for consistent sorting and referencing
-            "image": d["input_image"].split("/")[-1],  # Extract filename only from path
-            "conversations": [
-                {"from": "human", "value": d["prompt"]},  # Clinician's query/instruction
-                {"from": "gpt", "value": d["response"]}   # AI's expected response (ground truth)
-            ],
-            # Domain classification for data filtering and model specialization
-            "domain": {
-                "chest_xray": True,   # Primary modality: chest radiography
-                "mri": False,         # Not magnetic resonance imaging
-                "ct_scan": False,     # Not computed tomography  
-                "histology": False,   # Not histopathology
-                "gross": False        # Not gross pathology
-            },
-            "type": "conversation"  # Data type for conversation-based training
-        })
-    
-    return output
+    return data
 
 # Generate formatted training and test datasets
 train = to_json(train_df)
