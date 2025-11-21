@@ -69,6 +69,12 @@ python train_lora.py \
 ```
 
 <h2>4. Evaluation</h2>
+Before Evaluation, please ensure these two evalution scipts are under LLaVA-Med folder.
+
+```Shell
+
+```
+
 <h3>(1) Only LLaVA-Med</h3>
 Please ensure you have already downloaded the dataset and placed under **data** folder.
 
