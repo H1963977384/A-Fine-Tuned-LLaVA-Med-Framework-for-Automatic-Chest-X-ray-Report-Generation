@@ -93,6 +93,7 @@ Users can either train their own LoRA weights or utilize our pre-trained version
 ```Shell
 cd ..
 git clone https://github.com/H1963977384/LoRA_Weight.git
+unzip lora_final4.zip
 ```
 
 The LoRA weights can then be integrated into the base model through:
@@ -100,7 +101,7 @@ The LoRA weights can then be integrated into the base model through:
 ```Shell
 cd LLaVA-Med
 python llava_lora.py \
-  --lora_path ../LoRA_Weight \
+  --lora_path ../lora_final3 \
   --json_file ../data/test_report.json
 ```
 
