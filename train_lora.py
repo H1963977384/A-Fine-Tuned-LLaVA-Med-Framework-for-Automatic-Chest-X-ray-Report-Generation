@@ -392,7 +392,7 @@ if __name__ == "__main__":
                         help="JSON annotation file with one report entry per line")
     parser.add_argument("--image_dir", type=str, default=str(DEFAULT_IMAGE_DIR),
                         help="Directory containing medical images")
-    parser.add_argument("--output_dir", type=str, default="./lora_output", 
+    parser.add_argument("--output_dir", type=str, default="./lora_final3", 
                         help="Output directory for storing LoRA adapters and checkpoints")
     
     # Training hyperparameters
@@ -419,4 +419,5 @@ if __name__ == "__main__":
 
     # Start training
     train(args)
+
 
