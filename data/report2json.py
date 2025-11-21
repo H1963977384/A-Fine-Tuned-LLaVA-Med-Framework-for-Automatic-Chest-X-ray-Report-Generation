@@ -1,13 +1,21 @@
 import pandas as pd
 import json
+import argparse
+
+parser = argparse.ArgumentParser(description='transfer report into json')
+parser.add_argument('--report_file', type=str, required=True, help='Report File')
+parser.add_argument('--seed', type=str, required=True, help='Seed')
+args = parser.parse_args()
+report_file = args.report_file
+seed = args.seed
 
 # Load the medical report dataset from CSV file
 # This dataset contains radiology reports with associated image references and clinical information
-df = pd.read_csv('./report.csv')
+df = pd.read_csv(args.report_file)
 
 # Shuffle the dataset randomly with fixed seed for reproducible results
-# Using random_state=42 ensures consistent shuffling across runs
-df = df.sample(frac=1, random_state=42).reset_index(drop=True)
+# Using random_state ensures consistent shuffling across runs
+df = df.sample(frac=1, random_state=args.seed).reset_index(drop=True)
 
 # Split dataset into training (80%) and testing (20%) subsets
 # This follows standard machine learning practice for model evaluation
