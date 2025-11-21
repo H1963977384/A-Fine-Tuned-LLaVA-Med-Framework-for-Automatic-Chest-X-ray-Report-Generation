@@ -51,7 +51,7 @@ python report2json.py \
 ```
 
 <h2>3. Training</h2>
-The training hyperparameters (epochs, batch size, gradient accumulation steps, LoRA rank, and alpha) can be adjusted according to available computational resources.
+The training hyperparameters (epochs, batch size, gradient accumulation steps, LoRA rank, and alpha) can be adjusted according to available computational resources. For stable operation using the following parameters, verify that your GPU has **a minimum of 70GB memory**.
 
 ```Shell
 cd ..
