@@ -98,7 +98,7 @@ python ./eval/llava_lora.py \
 ![LLaVA-Med+LoRA.png](./plot/LLaVA-Med+LoRA.png)
 
 <h2>Main Result</h2>
-To validate LLaVA-Med's applicability and LoRA's effectiveness in medical report generation, this study quantitatively compared it with some main-stream methods [16-22] on the IU X-Ray dataset, as shown in Table Ⅱ . Regarding key image description generation metrics, our model surpasses the comparison models, such as R2Gen's in BLEU series scores, among others. Concurrently, it achieves state-of-the-art performance on METEOR (0.37) and ROUGE-L (0.46). Notably, our model also demonstrated precision (0.50), recall (0.46), and F1 score (0.46). Furthermore, the superiority of our model in the ROUGE-2 metric (0.25) for the impression segment further validates the model's ability to capture medical semantic relationships, our method achieves several-fold performance improvements over early models like CNN-RNN (BLEU-4: 0.066).
+To validate LLaVA-Med's applicability and LoRA's effectiveness in medical report generation, we quantitatively compared it with some main-stream methods on the IU X-Ray dataset, as shown in Table Ⅱ.
 
 ![result.png](./plot/result.png)
 
