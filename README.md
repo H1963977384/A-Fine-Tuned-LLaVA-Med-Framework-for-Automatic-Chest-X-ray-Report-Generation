@@ -74,7 +74,7 @@ Please ensure you have already downloaded the dataset and placed under **data** 
 
 ```Shell
 python ./eval/llava.py \
-  --json_file ~/data/test_report.json
+  --json_file ./data/test_report.json
 ```
 
 ![Only_LLaVA-Med.png](./plot/Only_LLaVA-Med.png)
@@ -101,8 +101,6 @@ python ./eval/llava_lora.py \
 To validate LLaVA-Med's applicability and LoRA's effectiveness in medical report generation, we quantitatively compared it with some mainstream methods on the IU X-Ray dataset, as shown in the following table.
 
 ![result1.png](./plot/result1.png)
-
-
 
 <h1>Contribution</h1>
 The team collaboratively completed this research. The seamless integration of each phase ensured the smooth progression of the research. 
