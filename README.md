@@ -45,7 +45,9 @@ python download.py
 The text data has been preprocessed and is ready for immediate use. The image paths and corresponding text data should be organized into separate JSON files for training and testing sets.
 
 ```Shell
-python report2json.py
+python report2json.py \
+  --dataframe_path ./report.csv \
+  --seed 42
 ```
 
 <h2>3. Training</h2>
