@@ -6,7 +6,7 @@ parser = argparse.ArgumentParser(description='transfer report into json')
 parser.add_argument('--report_path', type=str, required=False, help='Report File', default='./report.csv')
 parser.add_argument('--seed', type=str, required=False, help='Seed', default=42)
 args = parser.parse_args()
-report_file = args.report_file
+report_file = args.report_path
 seed = args.seed
 
 # Load the medical report dataset from CSV file
@@ -92,5 +92,6 @@ with open("./test_report.json", "w", encoding="utf-8") as f:
 # Output dataset statistics for verification
 print(f"✅ Generated {len(train)} training entries and saved to train_report.json")
 print(f"✅ Generated {len(test)} test entries and saved to test_report.json")
+
 
 
