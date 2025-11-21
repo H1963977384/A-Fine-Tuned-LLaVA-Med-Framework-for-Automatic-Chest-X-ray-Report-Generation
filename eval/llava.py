@@ -188,7 +188,7 @@ json_file = args.json_file
 
 # Load test dataset containing medical reports for evaluation
 with open(json_file, 'r') as f:
-    reports = [json.loads(line) for line in f]
+    reports = [json.loads(line) for line in f][0]
 
 # Initialize accumulators for evaluation metrics
 count = 0
@@ -233,3 +233,4 @@ for report in tqdm(reports):
 
     # Print running averages for real-time monitoring
     print(f"【Finding】    B-1: {finding_results['B-1']/count:.2f}, B-2: {finding_results['B-2']/count:.2f}, B-3: {finding_results['B-3']/count:.2f}, B-4: {finding_results['B-4']/count:.2f}, METEOR: {finding_results['METEOR']/count:.2f}, ROUGE-1: {finding_results['ROUGE-1']/count:.2f}, ROUGE-2: {finding_results['ROUGE-2']/count:.2f}, ROUGE-L: {finding_results['ROUGE-L']/count:.2f}, Precision: {finding_results['Precision']/count:.2f}, Recall: {finding_results['Recall']/count:.2f}, F1: {finding_results['F1']/count:.2f}")
+
