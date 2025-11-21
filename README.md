@@ -73,7 +73,7 @@ python train_lora.py \
 Please ensure you have already downloaded the dataset and placed under **data** folder.
 
 ```Shell
-python ./eval/llava.py \
+python ./LLaVA-Med/eval/llava.py \
   --json_file ./data/test_report.json
 ```
 
@@ -90,7 +90,7 @@ git clone https://github.com/H1963977384/LoRA_Weight.git
 The LoRA weights can then be integrated into the base model through:
 
 ```Shell
-python ./eval/llava_lora.py \
+python ./LLaVA-Med/llava_lora.py \
   --lora_path ./LoRA_Weight
   --json_file ./data/test_report.json
 ```
