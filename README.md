@@ -66,8 +66,8 @@ python train_lora.py \
   --lr 2e-4
 ```
 
-<h2>Evaluation</h2>
-<h3>Only LLaVA-Med</h3>
+<h2>4. Evaluation</h2>
+<h3>(1) Only LLaVA-Med</h3>
 Please ensure you have already downloaded the dataset and placed under **data** folder.
 
 ```Shell
@@ -78,15 +78,22 @@ python ./eval/llava.py \
 ![Only_LLaVA-Med.png](./plot/Only_LLaVA-Med.png)
 
 
-<h3>LLaVA-Med + LoRA</h3>
+<h3>(2) LLaVA-Med + LoRA</h3>
+Users can either train their own LoRA weights or utilize our pre-trained versions. To use our weights, download them via:
+
+```Shell
+git clone https://github.com/H1963977384/LoRA_Weight.git
+```
+
+The LoRA weights can then be integrated into the base model through:
 
 ```Shell
 python ./eval/llava_lora.py \
+  --lora_path ~/LoRA_Weight
   --json_file ~/data/test_report.json
 ```
 
 ![LLaVA-Med+LoRA.png](./plot/LLaVA-Med+LoRA.png)
-
 
 <h2>Main Result</h2>
 
