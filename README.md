@@ -98,7 +98,7 @@ python ./eval/llava_lora.py \
 ![LLaVA-Med+LoRA.png](./plot/LLaVA-Med+LoRA.png)
 
 <h2>Main Result</h2>
-To validate LLaVA-Med's applicability and LoRA's effectiveness in medical report generation, we quantitatively compared it with some main-stream methods on the IU X-Ray dataset, as shown in Table Ⅱ.
+To validate LLaVA-Med's applicability and LoRA's effectiveness in medical report generation, we quantitatively compared it with some main-stream methods on the IU X-Ray dataset, as shown in the following table.
 
 ![result.png](./plot/result.png)
 
