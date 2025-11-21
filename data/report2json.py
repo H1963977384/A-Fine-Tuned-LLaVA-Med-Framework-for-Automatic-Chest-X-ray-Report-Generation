@@ -83,12 +83,13 @@ test = to_json(test_df)
 
 # Save training dataset to JSON file with proper Unicode handling
 with open("./train_report.json", "w", encoding="utf-8") as f:
-    json.dump(train, f, ensure_ascii=False, indent=2)
+    json.dump(train, f, ensure_ascii=False)
 
 # Save test dataset to JSON file for model evaluation
 with open("./test_report.json", "w", encoding="utf-8") as f:
-    json.dump(test, f, ensure_ascii=False, indent=2)
+    json.dump(test, f, ensure_ascii=False)
 
 # Output dataset statistics for verification
 print(f"✅ Generated {len(train)} training entries and saved to train_report.json")
 print(f"✅ Generated {len(test)} test entries and saved to test_report.json")
+
