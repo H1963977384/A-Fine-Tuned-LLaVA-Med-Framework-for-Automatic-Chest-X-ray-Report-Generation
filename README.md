@@ -46,7 +46,7 @@ The text data has been preprocessed and is ready for immediate use. The image pa
 
 ```Shell
 python report2json.py \
-  --dataframe_path ./report.csv \
+  --report_path ./report.csv \
   --seed 42
 ```
 
