@@ -69,6 +69,8 @@ def get_chunk(lst, n, k):
 set_seed(0)
 disable_torch_init()
 sys.path.append('../LLaVA-Med')
+# Initialize ROUGE scorer for n-gram overlap and longest common subsequence metrics
+rouge = Rouge()
 
 # Load base LLaVA-Med model configuration and components
 model_path = 'microsoft/llava-med-v1.5-mistral-7b'
@@ -106,7 +108,7 @@ def run_model(report):
     """
     # Construct enhanced prompt with clinical reasoning constraints
     # These constraints ensure medically consistent and non-repetitive output
-    question = report['conversations'][0]['value']+" The Findings and Impression sections must be logically consistent. A finding cannot both be present and absent. State each finding only once. Do not create looping or repetitive text."
+    question = report['prompt']+" The Findings and Impression sections must be logically consistent. A finding cannot both be present and absent. State each finding only once. Do not create looping or repetitive text."
     questions = get_chunk(question, 1, 0)
     qs = questions.replace(DEFAULT_IMAGE_TOKEN, '').strip()
     
@@ -200,7 +202,7 @@ def calculate_sacrebleu_all(references, candidate):
 # Load test dataset containing medical cases for evaluation
 json_file = args.json_file
 with open(json_file, 'r') as f:
-    reports = [json.loads(line) for line in f]
+    reports = [json.loads(line) for line in f][0]
 
 # Initialize accumulators for evaluation metrics
 count = 0
@@ -209,14 +211,11 @@ finding_results = {'B-1': 0, 'B-2': 0, 'B-3': 0, 'B-4': 0, 'METEOR': 0, 'ROUGE-1
 # Store cumulative scores for Impression section evaluation (diagnostic conclusions)
 impression_results = {'B-1': 0, 'B-2': 0, 'B-3': 0, 'B-4': 0, 'METEOR': 0, 'ROUGE-1': 0, 'ROUGE-2': 0, 'ROUGE-L': 0, 'F1': 0, 'Precision': 0, 'Recall': 0}
 
-# Initialize ROUGE scorer for n-gram overlap and longest common subsequence metrics
-rouge = Rouge()
-
 # Evaluate model performance on each test case with progress tracking
 for report in tqdm(reports):
     count += 1
     # Extract ground truth report from test case
-    ori = report["conversations"][1]["value"]
+    ori = report["response"]
     
     # Parse ground truth into Findings and Impression sections using regex
     ori_finding = re.findall(r'Findings: (.+)', ori)
@@ -290,5 +289,6 @@ for report in tqdm(reports):
 【Finding】    B-1: {finding_results['B-1']/count:.2f}, B-2: {finding_results['B-2']/count:.2f}, B-3: {finding_results['B-3']/count:.2f}, B-4: {finding_results['B-4']/count:.2f}, METEOR: {finding_results['METEOR']/count:.2f}, ROUGE-1: {finding_results['ROUGE-1']/count:.2f}, ROUGE-2: {finding_results['ROUGE-2']/count:.2f}, ROUGE-L: {finding_results['ROUGE-L']/count:.2f}, Precision: {finding_results['Precision']/count:.2f}, Recall: {finding_results['Recall']/count:.2f}, F1: {finding_results['F1']/count:.2f}
 
 【Impression】 B-1: {impression_results['B-1']/count:.2f}, B-2: {impression_results['B-2']/count:.2f}, B-3: {impression_results['B-3']/count:.2f}, B-4: {impression_results['B-4']/count:.2f}, METEOR: {impression_results['METEOR']/count:.2f}, ROUGE-1: {impression_results['ROUGE-1']/count:.2f}, ROUGE-2: {impression_results['ROUGE-2']/count:.2f}, ROUGE-L: {impression_results['ROUGE-L']/count:.2f}, Precision: {impression_results['Precision']/count:.2f}, Recall: {impression_results['Recall']/count:.2f}, F1: {impression_results['F1']/count:.2f}''')
+
 
 
