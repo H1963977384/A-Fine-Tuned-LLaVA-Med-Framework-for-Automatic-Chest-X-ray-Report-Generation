@@ -91,8 +91,8 @@ The LoRA weights can then be integrated into the base model through:
 
 ```Shell
 python ./eval/llava_lora.py \
-  --lora_path ~/LoRA_Weight
-  --json_file ~/data/test_report.json
+  --lora_path ./LoRA_Weight
+  --json_file ./data/test_report.json
 ```
 
 ![LLaVA-Med+LoRA.png](./plot/LLaVA-Med+LoRA.png)
@@ -104,7 +104,9 @@ python ./eval/llava_lora.py \
 
 
 <h1>Contribution</h1>
-The team collaboratively completed this research. The seamless integration of each phase ensured the smooth progression of the research. <br>
+The team collaboratively completed this research. The seamless integration of each phase ensured the smooth progression of the research. 
+
+# 
 
 ![hyt.png](./plot/hyt.png)
 ![ln.png](./plot/ln.png)
