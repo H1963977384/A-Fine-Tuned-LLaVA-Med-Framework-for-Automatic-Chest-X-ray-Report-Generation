@@ -87,8 +87,7 @@ Then download them via:
 
 ```Shell
 cd ..
-git clone https://github.com/H1963977384/LoRA_Weight.git
-git lfs pull
+git lfs clone https://github.com/H1963977384/LoRA_Weight.git
 unzip lora_final4.zip
 ```
 
