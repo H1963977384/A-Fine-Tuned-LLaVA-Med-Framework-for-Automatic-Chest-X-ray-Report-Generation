@@ -3,19 +3,19 @@ import json
 import argparse
 
 parser = argparse.ArgumentParser(description='transfer report into json')
-parser.add_argument('--report_file', type=str, required=True, help='Report File')
-parser.add_argument('--seed', type=str, required=True, help='Seed')
+parser.add_argument('--report_file', type=str, required=False, help='Report File', default='./report.csv')
+parser.add_argument('--seed', type=str, required=False, help='Seed', default=42)
 args = parser.parse_args()
 report_file = args.report_file
 seed = args.seed
 
 # Load the medical report dataset from CSV file
 # This dataset contains radiology reports with associated image references and clinical information
-df = pd.read_csv(args.report_file)
+df = pd.read_csv(report_file)
 
 # Shuffle the dataset randomly with fixed seed for reproducible results
 # Using random_state ensures consistent shuffling across runs
-df = df.sample(frac=1, random_state=args.seed).reset_index(drop=True)
+df = df.sample(frac=1, random_state=seed).reset_index(drop=True)
 
 # Split dataset into training (80%) and testing (20%) subsets
 # This follows standard machine learning practice for model evaluation
@@ -49,7 +49,7 @@ def to_json(dataframe):
     data = []
     
     # Process each medical report case in the dataset
-    for _, row in train_df.iterrows():
+    for _, row in dataframe.iterrows():
         # Extract and split image filenames (some cases have multiple views)
         image_path = row['image_files'].split(';')
         
@@ -92,3 +92,4 @@ with open("./test_report.json", "w", encoding="utf-8") as f:
 # Output dataset statistics for verification
 print(f"✅ Generated {len(train)} training entries and saved to train_report.json")
 print(f"✅ Generated {len(test)} test entries and saved to test_report.json")
+
