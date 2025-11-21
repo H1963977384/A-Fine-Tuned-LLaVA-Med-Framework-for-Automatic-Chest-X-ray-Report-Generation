@@ -1,4 +1,4 @@
-fimimport argparse
+import argparse
 import os
 import json
 import math
@@ -419,4 +419,5 @@ if __name__ == "__main__":
 
     # Start training
     train(args)
+
 
